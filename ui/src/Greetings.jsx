@@ -2,7 +2,6 @@ import React from "react";
 const initialGreetingsData = require("./data.js");
 
 
-//
 class ASingleGreetingMessage extends React.Component {
   render() {
     const { greeting } = this.props;
