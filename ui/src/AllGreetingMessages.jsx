@@ -53,10 +53,10 @@ class ASingleGreetingMessage extends React.Component {
         this.state.inputLinkClicked ? (
           <div></div>
         ) : (
-          <button onClick={this.toggleEditForm}>Edit</button>
+          <button onClick={this.toggleEditForm} disabled={greeting.id==1||greeting.id==2||greeting.id==3}>Edit</button>
         )}
 
-        <button type="button" onClick={() => { this.props.deleteGreeting(greeting.id); }}>Delete</button>
+        <button type="button" disabled={greeting.id==1||greeting.id==2||greeting.id==3} onClick={() => { this.props.deleteGreeting(greeting.id); }}>Delete</button>
 
         <br />
         {this.state.inputLinkClicked ? (
@@ -95,7 +95,8 @@ class ASingleGreetingMessage extends React.Component {
 export default class AllGreetingMessages extends React.Component {
   render() {
     //key is needed below, when creating a list in the UI from an array with JSX, you should add a key prop to each child and to any of its’ children.
-    const allGreetingMessages = this.props.greetingsData.map((i) => (
+    const allGreetingMessages = this.props.greetingsData.slice(0)
+    .reverse().map((i) => (
       <ASingleGreetingMessage key={i._id} greeting={i} updateGreeting={this.props.updateGreeting} deleteGreeting={this.props.deleteGreeting}/>
     ));
     return <div>{allGreetingMessages}</div>;

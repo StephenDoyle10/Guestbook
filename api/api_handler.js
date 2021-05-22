@@ -20,6 +20,7 @@ const server = new ApolloServer({
     //makes playground interface available on deployed app, which is turned off by default:
     playground: true,
     introspection: true,
+    
 })
 
 function installHandler(app) {
